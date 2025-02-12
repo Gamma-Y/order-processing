@@ -12,9 +12,16 @@
     </changeSet>
 
     <changeSet id="1739383364583-1" author="Gamma">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="1">
+                    SELECT COUNT(*) FROM pg_type WHERE typname = 'order_status' AND typnamespace = (SELECT oid FROM
+                    pg_namespace WHERE nspname = 'order_schema');
+                </sqlCheck>
+            </not>
+        </preConditions>
         <sql>
-            DROP TYPE IF EXISTS order_schema.order_status;
-            CREATE TYPE order_schema.order_status  AS ENUM ('CREATED', 'PROCESSING', 'COMPLETED', 'CANCELLED');
+            CREATE TYPE order_schema.order_status AS ENUM ('CREATED', 'PROCESSING', 'COMPLETED', 'CANCELLED');
         </sql>
     </changeSet>
 
