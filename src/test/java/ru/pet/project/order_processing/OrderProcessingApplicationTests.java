@@ -1,4 +1,4 @@
-package ru.pet.proejct.order_processing;
+package ru.pet.project.order_processing;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package ru.pet.proejct.order_processing;
+package ru.pet.project.order_processing;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
