@@ -123,15 +123,35 @@
                             <name>org.jooq.meta.postgres.PostgresDatabase</name>
                             <includes>.*</includes>
                             <inputSchema>order_schema</inputSchema>
+
+                            <forcedTypes>
+                                <forcedType>
+                                    <priority>0</priority>
+                                    <enumConverter>true</enumConverter>
+                                    <nullability>ALL</nullability>
+                                    <objectType>ALL</objectType>
+                                    <!--                                    &lt;!&ndash; Specify the Java type of your custom type. This corresponds to the Converter's <U> type. &ndash;&gt;-->
+                                    <!--                                    <userType>com.example.MyEnum</userType>-->
+
+                                    <!-- Apply the built in org.jooq.impl.EnumConverter. -->
+                                    <enumConverter>true</enumConverter>
+
+                                    <!-- A Java regex matching fully-qualified columns, attributes, parameters. Use the pipe to separate several expressions. -->
+                                    <!--                                    <includeExpression>.*\.MY_STATUS</includeExpression>-->
+                                </forcedType>
+                            </forcedTypes>
                         </database>
                         <generate>
-                            <pojos>true</pojos>
-                            <pojosEqualsAndHashCode>true</pojosEqualsAndHashCode>
                             <javaTimeTypes>true</javaTimeTypes>
-                            <fluentSetters>true</fluentSetters>
+<!--                            <fluentSetters>true</fluentSetters>-->
+
+                            <records>true</records>
+
+                            <pojos>true</pojos>
+
                         </generate>
                         <target>
-                            <packageName>ru.pet.project.order_processing.db.model</packageName>
+                            <packageName>ru.pet.project.order_processing.db</packageName>
                             <directory>target/generated-sources/jooq</directory>
                         </target>
                     </generator>
